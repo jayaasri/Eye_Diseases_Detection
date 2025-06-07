@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ayurvedic Eye Care | MediVision AI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    /* Updated CSS styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      color: #333;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: #1976d2;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    section {
+      padding: 2rem;
+      animation: fadeIn 1s ease;
+    }
+    h2 {
+      text-align: center;
+      color: #1976d2;
+      margin-bottom: 1.5rem;
+    }
+    .dosha-quiz {
+      background-color: #e8f8f5;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .dosha-quiz h3 {
+      font-size: 1.8rem;
+      color: #27ae60;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
+    }
+    .dosha-quiz p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    .quiz-question {
+      margin-bottom: 1rem;
+    }
+    .quiz-question h4 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #34495e;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .quiz-option {
+      padding: 0.8rem;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .quiz-option.selected {
+      background-color: #f39c12; /* Highlight selected option */
+      color: white;
+    }
+    .quiz-option:hover {
+      background-color: #f1c40f;
+    }
+    .quiz-btn {
+      background-color: #27ae60;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: block;
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+    .quiz-btn:hover {
+      background-color: #1e8449;
+    }
+    footer {
+      background-color: #1976d2;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    Ayurvedic Eye Care
+    <a href="ayurvedic.html" class="btn btn-secondary">← Back</a>
+  </header>
+
+  <!-- Main Section -->
+  <section>
+    <div class="container">
+      <h2>Explore traditional Ayurvedic practices, lifestyle tips, and remedies for nurturing your vision naturally.</h2>
+
+      <!-- Dosha Quiz -->
+      <div class="dosha-quiz">
+        <h3>✨ What’s Your Dosha?</h3>
+        <p><em>Discover your Ayurvedic body type and get personalized eye care tips.</em></p>
+        
+        <!-- Dosha Quiz Form -->
+        <form id="doshaQuizForm">
+          <!-- Question 1 -->
+          <div class="quiz-question">
+            <h4>1. How would you describe your body frame?</h4>
+            <div class="quiz-options">
+              <div class="quiz-option" data-answer="Vata">Light, thin, and tall</div>
+              <div class="quiz-option" data-answer="Pitta">Medium build with muscular definition</div>
+              <div class="quiz-option" data-answer="Kapha">Large, solid, and heavy</div>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="quiz-question">
+            <h4>2. What is your natural body temperature?</h4>
+            <div class="quiz-options">
+              <div class="quiz-option" data-answer="Vata">Cold and dry</div>
+              <div class="quiz-option" data-answer="Pitta">Warm and intense</div>
+              <div class="quiz-option" data-answer="Kapha">Cool and moist</div>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="quiz-question">
+            <h4>3. How do you typically feel mentally?</h4>
+            <div class="quiz-options">
+              <div class="quiz-option" data-answer="Vata">Easily excited and anxious</div>
+              <div class="quiz-option" data-answer="Pitta">Focused, sharp, and sometimes irritable</div>
+              <div class="quiz-option" data-answer="Kapha">Calm, steady, and slow</div>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="quiz-question">
+            <h4>4. How is your digestion?</h4>
+            <div class="quiz-options">
+              <div class="quiz-option" data-answer="Vata">Irregular, sometimes bloated</div>
+              <div class="quiz-option" data-answer="Pitta">Strong and intense, but can sometimes cause acidity</div>
+              <div class="quiz-option" data-answer="Kapha">Slow and heavy, prone to indigestion</div>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="quiz-question">
+            <h4>5. What is your typical energy level?</h4>
+            <div class="quiz-options">
+              <div class="quiz-option" data-answer="Vata">Energetic but often fluctuating</div>
+              <div class="quiz-option" data-answer="Pitta">Consistent and intense</div>
+              <div class="quiz-option" data-answer="Kapha">Low energy, often sluggish</div>
+            </div>
+          </div>
+              <!-- Question 6 -->
+          <div class="quiz-question">
+            <h4>6. How would you describe your sleep patterns?</h4>
+            <div class="quiz-options">
+              <div class="quiz-option" data-answer="Vata">Light and restless</div>
+              <div class="quiz-option" data-answer="Pitta">Sound, but can be disturbed by stress</div>
+              <div class="quiz-option" data-answer="Kapha">Deep and long, but difficult to wake up</div>
+            </div>
+          </div>
+
+          <!-- Question 7 -->
+          <div class="quiz-question">
+            <h4>7. How would you describe your skin?</h4>
+            <div class="quiz-options">
+              <div class="quiz-option" data-answer="Vata">Dry and rough</div>
+              <div class="quiz-option" data-answer="Pitta">Warm and oily</div>
+              <div class="quiz-option" data-answer="Kapha">Smooth and moist</div>
+            </div>
+          </div>
+
+          <!-- Question 8 -->
+          <div class="quiz-question">
+            <h4>8. How do you handle stress?</h4>
+            <div class="quiz-options">
+              <div class="quiz-option" data-answer="Vata">I get anxious and worried</div>
+              <div class="quiz-option" data-answer="Pitta">I get frustrated or angry</div>
+              <div class="quiz-option" data-answer="Kapha">I tend to withdraw or become sluggish</div>
+            </div>
+          </div>
+
+          <!-- Question 9 -->
+          <div class="quiz-question">
+            <h4>9. What is your typical appetite?</h4>
+            <div class="quiz-options">
+              <div class="quiz-option" data-answer="Vata">Erratic, I skip meals often</div>
+              <div class="quiz-option" data-answer="Pitta">Strong and regular, with a fast metabolism</div>
+              <div class="quiz-option" data-answer="Kapha">Slow, and I tend to overeat</div>
+            </div>
+          </div>
+
+          <!-- Question 10 -->
+          <div class="quiz-question">
+            <h4>10. How is your focus?</h4>
+            <div class="quiz-options">
+              <div class="quiz-option" data-answer="Vata">I have trouble staying focused</div>
+              <div class="quiz-option" data-answer="Pitta">I can concentrate intensely</div>
+              <div class="quiz-option" data-answer="Kapha">I am easily distracted</div>
+            </div>
+          </div>
+          <!-- Submit Button -->
+          <button type="submit" class="quiz-btn">Submit Your Results</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    MediVision AI - Ayurvedic Eye Care | 2025
+  </footer>
+
+  <script>
+    document.getElementById('doshaQuizForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      let score = { Vata: 0, Pitta: 0, Kapha: 0 };
+
+      const selectedOptions = document.querySelectorAll('.quiz-option.selected');
+      selectedOptions.forEach(option => {
+        score[option.dataset.answer]++;
+      });
+
+      const dominantDosha = Object.keys(score).reduce((a, b) => (score[a] > score[b] ? a : b));
+      alert('Your dominant Dosha is: ' + dominantDosha);
+    });
+
+    document.querySelectorAll('.quiz-option').forEach(option => {
+      option.addEventListener('click', function() {
+        // Toggle the 'selected' class to indicate the selection
+        this.classList.toggle('selected');
+        
+        // Optionally, deselect other options if needed
+        const otherOptions = this.parentElement.querySelectorAll('.quiz-option');
+        otherOptions.forEach(otherOption => {
+          if (otherOption !== this) {
+            otherOption.classList.remove('selected');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

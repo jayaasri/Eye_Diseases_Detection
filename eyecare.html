@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EyeXplainer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      color: #333;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: #1976d2;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    section {
+      padding: 2rem;
+      animation: fadeIn 1s ease;
+    }
+    h2 {
+      text-align: center;
+      color: #1976d2;
+      margin-bottom: 1.5rem;
+    }
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .tip-card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(25, 118, 210, 0.2);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+    .tip-card:hover {
+      transform: translateY(-5px);
+      background: #e3f2fd;
+    }
+    .tip-card i {
+      font-size: 2rem;
+      color: #1976d2;
+      margin-bottom: 1rem;
+    }
+    button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #0d47a1;
+    }
+    blockquote {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    footer {
+      background-color: #1976d2;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>👁️ Daily Eye Care Tips
+  <a href="home.html" class="btn btn-secondary">← Back</a>
+</header>
+
+<!-- Daily Tips Section -->
+<section>
+  <h2>🌟 Essential Eye Care Tips</h2>
+  <div class="tips-grid">
+    <a href="https://www.aao.org/eye-health/tips-prevention/10-ways-to-protect-your-eyes" target="_blank" class="tip-card">
+      <i class="fas fa-eye-dropper"></i>
+      <h3>Blink Regularly</h3>
+      <p>Remember to blink often to moisten your eyes, especially when using screens.</p>
+    </a>
+    <a href="https://www.healthline.com/health/eye-health/importance-of-glasses" target="_blank" class="tip-card">
+      <i class="fas fa-glasses"></i>
+      <h3>Use Proper Glasses</h3>
+      <p>Wear prescribed glasses to avoid straining your eyes and worsening vision.</p>
+    </a>
+    <a href="https://www.aao.org/eye-health/tips-prevention/20-20-20-rule" target="_blank" class="tip-card">
+      <i class="fas fa-laptop-house"></i>
+      <h3>Follow 20-20-20 Rule</h3>
+      <p>Every 20 minutes, look at something 20 feet away for 20 seconds.</p>
+    </a>
+  </div>
+</section>
+
+<!-- Eye Exercise Section -->
+<section>
+  <h2>🧘‍♂️ Quick Eye Relaxation Exercises</h2>
+  <div class="tips-grid">
+    <a href="https://www.youtube.com/shorts/uUVml5pCQxQ" target="_blank" class="tip-card">
+      <i class="fas fa-arrows-alt"></i>
+      <h3>Focus Shifting</h3>
+      <p>Switch focus between near and distant objects for 30 seconds to strengthen muscles.</p>
+    </a>
+    <a href="https://www.youtube.com/shorts/uZXW-U_5nJ4" target="_blank" class="tip-card">
+      <i class="fas fa-eye"></i>
+      <h3>Palming</h3>
+      <p>Rub your palms and gently cup them over your closed eyes to relax them.</p>
+    </a>
+    <a href="https://www.youtube.com/shorts/ZodX_XpJXac" target="_blank" class="tip-card">
+      <i class="fas fa-redo"></i>
+      <h3>Eye Rolling</h3>
+      <p>Roll your eyes clockwise and counter-clockwise to ease tension.</p>
+    </a>
+  </div>
+</section>
+
+<!-- Myth Busters Section -->
+<section>
+  <h2>🔍 Eye Health: Myth vs Fact</h2>
+  <div class="tips-grid">
+    <a href="https://www.optometrists.org/general-practice-optometry/optical/do-eyeglasses-weaken-my-eyes/" target="_blank" class="tip-card">
+      <h3>❌ Myth</h3>
+      <p>“Wearing glasses weakens eyesight.”</p>
+      <h3>✅ Fact</h3>
+      <p>Glasses help you see clearly without affecting natural vision.</p>
+    </a>
+    <a href="https://gaileyeyeclinic.com/carrots-actually-improve-eyesight/" target="_blank" class="tip-card">
+      <h3>❌ Myth</h3>
+      <p>“Carrots will fix vision problems.”</p>
+      <h3>✅ Fact</h3>
+      <p>They maintain eye health but don’t cure myopia or hyperopia.</p>
+    </a>
+    <a href="https://news.uthscsa.edu/myth-or-fact-can-sitting-too-close-to-the-tv-hurt-your-eyes-will-wearing-glasses-weaken-your-eyes-test-your-knowledge/#:~:text=Answer%3A%20Myth.,close%20to%20you%20appear%20blurry." target="_blank" class="tip-card">
+      <h3>❌ Myth</h3>
+      <p>“Sitting close to TV ruins eyes.”</p>
+      <h3>✅ Fact</h3>
+      <p>It may cause strain but no permanent eye damage occurs.</p>
+    </a>
+  </div>
+</section>
+
+<!-- Fun Quiz Section -->
+<section>
+  <h2>🎯 Test Your Eye Knowledge</h2>
+
+  <div style="margin-bottom: 1rem; text-align:center;">
+    <p><strong>Q1:</strong> How often should you take a break from screens?</p>
+    <button onclick="alert('✅ Correct! Follow the 20-20-20 rule.')">Every 20 minutes</button>
+    <button onclick="alert('❌ Oops! Not quite. Try again.')">Every 2 hours</button>
+  </div>
+
+  <div style="margin-bottom: 1rem; text-align:center;">
+    <p><strong>Q2:</strong> Which vitamin is key for eye health?</p>
+    <button onclick="alert('✅ Correct! Vitamin A is vital for vision.')">Vitamin A</button>
+    <button onclick="alert('❌ Not the best choice. Vitamin C boosts immunity, but Vitamin A is essential for vision.')">Vitamin C</button>
+  </div>
+
+  <div style="margin-bottom: 1rem; text-align:center;">
+    <p><strong>Q3:</strong> What part of the eye controls the amount of light that enters?</p>
+    <button onclick="alert('✅ Correct! The iris adjusts the size of the pupil.')">Iris</button>
+    <button onclick="alert('❌ Oops! The cornea focuses light but doesn’t control its amount.')">Cornea</button>
+  </div>
+
+  <div style="margin-bottom: 1rem; text-align:center;">
+    <p><strong>Q4:</strong> Which common habit can cause dry eyes?</p>
+    <button onclick="alert('✅ Correct! Staring at screens reduces blinking.')">Excessive screen time</button>
+    <button onclick="alert('❌ Not exactly. Reading a book is less harmful than long screen exposure.')">Reading a book</button>
+  </div>
+
+  <div style="margin-bottom: 1rem; text-align:center;">
+    <p><strong>Q5:</strong> True or False: Sunglasses are only needed in summer.</p>
+    <button onclick="alert('❌ False! UV rays can damage eyes year-round.')">True</button>
+    <button onclick="alert('✅ Correct! Protect your eyes from UV rays in all seasons.')">False</button>
+  </div>
+
+</section>
+
+
+<!-- Vision Board Section -->
+<section>
+  <h2>📜 Vision Board - Inspirational Quotes</h2>
+  <blockquote id="quote"></blockquote>
+</section>
+
+<script>
+const quotes = [
+  "Your eyes show the strength of your soul. – Paulo Coelho",
+  "The eyes are the windows to your health.",
+  "Healthy eyes see a healthy world.",
+  "Take care of your eyes — your first window to life.",
+  "Clear vision, clear future."
+];
+let quoteIndex = 0;
+setInterval(() => {
+  document.getElementById('quote').textContent = quotes[quoteIndex];
+  quoteIndex = (quoteIndex + 1) % quotes.length;
+}, 5000);
+</script>
+
+<footer>👁️ Made with care by MediVision AI © 2025</footer>
+
+</body>
+</html>

@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EyeXplainer - Medical Diagnosis System</title>
+    
+       <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-light: #4285f4;
+            --primary-dark: #0d47a1;
+            --secondary: #34a853;
+            --accent: #ea4335;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+            --gray-light: #dadce0;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 15px;
+            border-radius: var(--radius);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            background-color: rgba(26, 115, 232, 0.1);
+        }
+
+        .sections {
+            position: relative;
+            min-height: calc(100vh - 80px);
+        }
+
+        .section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s;
+            overflow-y: auto;
+            padding: 40px 0;
+        }
+
+        .section.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 40px;
+            color: var(--gray);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .module-image {
+            height: 200px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .module-content {
+            padding: 20px;
+        }
+
+        .module-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .module-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+  
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(26, 115, 232, 0.1);
+            color: var(--primary);
+        }
+
+        .upload-container {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .upload-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .upload-header h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .upload-header p {
+            color: var(--gray);
+        }
+
+        .upload-area {
+            border: 2px dashed var(--gray-light);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .results-container {
+            margin-top: 40px;
+            display: none;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+        }
+
+        .result-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--gray-light);
+            padding-bottom: 10px;
+        }
+
+        .confidence-bar {
+            height: 20px;
+            background-color: var(--gray-light);
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .confidence-level {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 10px;
+            width: 75%;
+        }
+
+        .heatmap-image {
+            width: 100%;
+            border-radius: var(--radius);
+            margin-top: 15px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .navbar-content {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                margin-top: 20px;
+            }
+
+            .nav-links li {
+                margin: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .buttons .btn {
+                margin-bottom: 10px;
+            }
+        }
+        .about-section {
+  padding: 80px 20px;
+  background-color: #f3f7fb;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.about-section .container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1c3f60;
+  position: relative;
+}
+
+.about-section h2::after {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 60px;
+  background: #4bb6f2;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-section strong {
+  color: #1c3f60;
+}
+
+.about-section em {
+  color: #0077b6;
+  font-style: normal;
+}
+body {
+  zoom: 100%;
+}
+.module-card {
+  display: flex;
+  flex-direction: column;
+  height: 600px; /* increased height */
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+.module-card:hover {
+  transform: translateY(-8px);
+}
+.module-image {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+}
+.module-content {
+  padding: 20px;
+  background-color: #fff;
+}
+.module-content h3 {
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+.module-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+}
+.module-img-full {
+  width: 100%;
+  height: 220px;
+  object-fit: contain; /* shows full image */
+  padding: 10px;        /* space around image to avoid awkward white gaps */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #f9f9f9; /* optional: soft background behind image */
+  transition: transform 0.3s ease-in-out;
+}
+
+.module-img-full:hover {
+  transform: scale(1.03);
+}
+
+
+
+.module-card:hover .module-image {
+  transform: scale(1.05);
+}
+
+/* New Style for Results Section */
+#results .card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#results .card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 30px;
+    transition: var(--transition);
+}
+
+#results .card:hover {
+    transform: translateY(-5px);
+}
+
+#results .card h2 {
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#results .metrics img {
+    width: 700px; /* Fixed width */
+    height: 400px; /* Maintain aspect ratio */
+    margin-top: 10px;
+    border-radius: var(--radius);
+}
+
+
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-content">
+            <div class="logo">
+                <span class="logo-icon">👁️</span>
+                <span>EyeXplainer</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active" onclick="showSection('home')">Home</a></li>
+                <li><a href="#modules" class="nav-link" onclick="showSection('modules')">Modules</a></li>
+                <li><a href="#more" class="nav-link" onclick="showSection('more')">Explore Eye Care</a></li>
+                
+                <li><a href="#results" class="nav-link" onclick="showSection('results')">Results</a></li> 
+            </ul>
+        </div>
+    </header>
+
+    <main class="sections">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero animate">
+                    <h2>EyeXplainer: Predictive and Explainable AI for Reliable Eye Health Diagnostics</h2>
+                <p>EyeXplainer is an AI-powered diagnostic system designed to automatically detect and diagnose Diabetic Retinopathy, Cataracts, and Glaucoma from medical imaging data. It supports early intervention and timely treatment by leveraging deep learning techniques to accurately predict the presence and also its severity.</p>
+
+                    <a href="#modules" class="btn" onclick="showSection('modules')">Dive into Detection</a>
+                </div>
+
+                <section id="about" class="about-section">
+                    <div class="container">
+                      <h2>About EyeXplainer</h2>
+                      <p>
+                        At <strong>EyeXplainer</strong>, we're driven by a mission to make eye healthcare smarter, faster, and more transparent. Our platform harnesses the power of Deep Learning and Explainable AI (XAI) to accurately detect and classify three of the most vision-threatening diseases: <em>Diabetic Retinopathy, Glaucoma</em>, and <em>Cataracts</em>.
+                      </p>
+                      <p>
+                        Built with cutting-edge technology and a human-centered approach, EyeXplainer not only delivers rapid predictions but also provides interpretability—so that clinicians can understand the “why” behind every diagnosis. We aim to bridge the gap between AI and trust in medical decision-making.
+                      </p>
+                      <p>
+                        With the growing burden of visual impairment worldwide, we believe innovation in AI is key to early intervention, especially in underserved areas. Our unified web application empowers healthcare professionals with a reliable second opinion—making expert-level eye diagnostics accessible, interpretable, and impactful.
+                      </p>
+                    </div>
+                  </section>
+
+                  <div class="features">
+                    <div class="feature-card animate" style="animation-delay: 0.1s;">
+                        <div class="feature-icon">🔍</div>
+                        <h3>AI-Powered Analysis</h3>
+                        <p>With integrated Explainable AI (XAI), EyeXplainer provides interpretable visual explanations to help clinicians understand and trust the diagnostic process — offering a comprehensive view of each disease's progression and enhancing decision-making in ophthalmic care.</p>
+                    </div>
+                    <div class="feature-card animate" style="animation-delay: 0.2s;">
+                        <div class="feature-icon">👁️</div>
+                        <h3>Why These 3 Eye Diseases?</h3>
+                        <p>Diabetic Retinopathy, Glaucoma, and Cataracts are leading causes of preventable blindness. Early detection of these conditions can reduce vision loss by over 90%, making them crucial targets for AI-powered diagnosis.</p>
+                    </div>
+                    <div class="feature-card animate" style="animation-delay: 0.3s;">
+                        <div class="feature-icon">✨</div>
+                        <h3>What Makes This Unique?</h3>
+                        <p>Unlike traditional systems, EyeXplainer combines multi-disease detection, Explainable AI, and severity prediction into one unified platform—bringing transparency, trust, and efficiency to eye disease diagnosis.</p>
+                    </div>
+            </div>
+        </section>
+  <!-- More Section -->
+  <section id="results" class="section">
+  <div class="container">
+    <h1>Model Results Overview</h1>
+
+    <div class="card-grid">
+        
+        <!-- Diabetic Retinopathy Card -->
+        <div class="card">
+            <h2>Diabetic Retinopathy</h2>
+            <p><strong>Dataset Used:</strong> APTOS + EYEPACS + MESSIDOR-2</p>
+            <p><strong>Train Accuracy:</strong> 97.57%</p>
+            <p><strong>Test Accuracy:</strong> 92.87%</p>
+
+            <div class="metrics">
+                <h3>Performance Metrics</h3>
+                <p>Confusion Matrix:</p>
+                <img src="static/Web_imgs/diabetic_confusion_matrix.png" alt="Confusion Matrix">
+                <p>ROC Curve:</p>
+                <img src="static/Web_imgs/diabetic_roc.png" alt="ROC Curve">
+                <p>Classification Report:</p>
+                <img src="static/Web_imgs/diabetic_classification.png" alt="Classification Report">
+            </div>
+        </div>
+
+        <!-- Cataract Card -->
+        <div class="card">
+            <h2>Cataract</h2>
+            <p><strong>Dataset Used:</strong> Cataract Photo Image Dataset</p>
+            <p><strong>Train Accuracy:</strong> 99%</p>
+            <p><strong>Test Accuracy:</strong> 99.86%</p>
+
+            <div class="metrics">
+                <h3>Performance Metrics</h3>
+                <p>Confusion Matrix:</p>
+                <img src="static/Web_imgs/cataract_confusion_matrix.png" alt="Confusion Matrix">
+                <p>ROC Curve:</p>
+                <img src="static/Web_imgs/cataract_roc.png" alt="ROC Curve">
+                <p>Classification Report:</p>
+                <img src="static/Web_imgs/cataract_classification.png" alt="Classification Report">
+            </div>
+        </div>
+
+        <!-- Glaucoma Card -->
+        <div class="card">
+            <h2>Glaucoma</h2>
+            <p><strong>Dataset Used:</strong> EYEPACS AIROGS</p>
+            <p><strong>Train Accuracy:</strong> 95%</p>
+            <p><strong>Test Accuracy:</strong> 98%</p>
+
+            <div class="metrics">
+                <h3>Performance Metrics</h3>
+                <p>Confusion Matrix:</p>
+                <img src="static/Web_imgs/glaucoma_confusion_matrix.png" alt="Confusion Matrix">
+                <p>ROC Curve:</p>
+                <img src="static/Web_imgs/glaucoma_roc.png" alt="ROC Curve">
+                <p>Classification Report:</p>
+                <img src="static/Web_imgs/glaucoma_classification.png" alt="Classification Report">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+  <section id="more" class="section">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 40px; color: var(--primary);">Explore Eye Care</h2>
+        <div class="modules-grid">
+            <!-- Surgery eye care -->
+            <div class="module-card animate" style="animation-delay: 0.1s;">
+                <div class="module-image" style="background-image: url('images/surgery.jpg');"></div>
+                <div class="module-content">
+                    <h3>Pre and post-surgery eye-care</h3>
+                    <p>Know about pre and post surgery eye care of diabetic retinopathy, cataract, and glaucoma</p>
+                    <a href="Pre and Post-Surgery Eye Care.html" class="btn">View pre and post surgery eye care</a>
+                </div>
+            </div>
+
+            <!-- Ayurvedic Eye Care -->
+            <div class="module-card animate" style="animation-delay: 0.3s;">
+                <div class="module-image" style="background-image: url('images/ayurvedic.jpg');"></div>
+                <div class="module-content">
+                    <h3>Ayurvedic Eye Care</h3>
+                    <p>Explore holistic and traditional Ayurvedic practices for improved eye health.</p>
+                    <a href="ayurvedic.html" class="btn">Explore Ayurveda</a>
+                </div>
+            </div>
+
+            <!-- Eye Care -->
+            <div class="module-card animate" style="animation-delay: 0.5s;">
+                <div class="module-image" style="background-image: url('images/eyecare.jpg');"></div>
+                <div class="module-content">
+                    <h3>Eye Care</h3>
+                    <p>Get insights into pediatric vision care and early detection of childhood eye issues.</p>
+                    <a href="eyecare.html" class="btn">View eye care</a>
+                </div>
+            </div>
+
+            <!-- Vision -->
+            <div class="module-card animate" style="animation-delay: 0.1s;">
+                <div class="module-image" style="background-image: url('images/vision.jpg');"></div>
+                <div class="module-content">
+                    <h3>Vision Test</h3>
+                    <p>Check your vision through quiz and vision chart.</p>
+                    <a href="vision.html" class="btn">View Vision test</a>
+                </div>
+            </div>
+
+            <!-- FAQs -->
+            <div class="module-card animate" style="animation-delay: 0.1s;">
+                <div class="module-image" style="background-image: url('images/faq.jpg');"></div>
+                <div class="module-content">
+                    <h3>FAQs</h3>
+                    <p>Find answers to common questions about eye health, treatments, and AI diagnostics.</p>
+                    <a href="faqs.html" class="btn">View FAQs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    </div>
+</div>
+</section>
+      
+        <section id="modules" class="section">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 40px; color: var(--primary);">Diagnostic Modules</h2>
+                <div class="modules-grid">
+                    <div class="module-card animate">
+                        <div class="module-image" style=
+                                    "background-image: url('/static/Web_imgs/3444_right.png');
+                                    background-size: contain;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+                                    width: 100%;
+                                    height: 270px; /* or any fixed height you prefer */
+                                    border-top-left-radius: 10px;
+                                    border-top-right-radius: 10px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                        "></div>
+                        <div class="module-content">
+                            <h3>Diabetic Retinopathy</h3>
+                            <p>
+                                Detect and classify Diabetic Retinopathy from fundus images using advanced AI.
+                                The system identifies microaneurysms, hemorrhages, and other retinal anomalies,
+                                then predicts the severity stage—ranging from No DR, Mild, Moderate, Severe, to Proliferative DR.
+                              </p>
+                             <a href="#diabetic-retinopathy" class="btn" onclick="showSection('diabetic-retinopathy')">Upload Image</a>
+                        </div>
+                    </div>
+                    <div class="module-card animate" style="animation-delay: 0.1s;">
+                        <div class="module-image" style=
+                            "background-image: url('/static/Web_imgs/glu2.jpeg');
+                            background-size: contain;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            width: 100%;
+                            height: 270px; /* or any fixed height you prefer */
+                            border-top-left-radius: 10px;
+                            border-top-right-radius: 10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        "></div>                        
+                        <div class="module-content">
+                            <h3>Glaucoma</h3>
+                            <p>
+                                Detect the presence or absence of Glaucoma using deep learning.
+                                The system offers visual explanations to enhance transparency by highlighting regions that most influenced the diagnosis.
+                              </p>
+                            <a href="#glaucoma" class="btn" onclick="showSection('glaucoma')">Upload Image</a>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card animate" style="animation-delay: 0.2s;">
+                        <div class="module-image" style=
+                        "background-image: url('/static/Web_imgs/cat.jpeg');
+                        background-size: contain;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        width: 100%;
+                        height: 270px; /* or any fixed height you prefer */
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    "></div>
+
+                        <div class="module-content">
+                            <h3>Cataract</h3>
+                            <p>
+                                Assess the presence and severity of Cataracts from eye images.
+                                The system provides visual explanations to enhance transparency by highlighting regions that most influenced the diagnosis.
+                              </p>
+                            <a href="#cataract" class="btn" onclick="showSection('cataract')">Upload Image</a>
+                        </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </section>
+
+  <!-- Diabetic Retinopathy Section -->
+<section id="diabetic-retinopathy" class="section">
+    <div class="container">
+        <div class="upload-container animate">
+            <div class="upload-header">
+                <h2>Diabetic Retinopathy Analysis</h2>
+                <p>Upload a fundus photograph to detect the presence of diabetic retinopathy</p>
+            </div>
+            <div class="upload-area" id="dr-upload-area">
+                <div class="upload-icon">📁</div>
+                <p class="upload-text">Drag and drop your image here or click to browse</p>
+                
+                <input type="file" class="upload-input" id="dr-upload-input" accept="image/*">
+            </div>
+            <div class="buttons">
+                <a href="#modules" class="btn btn-secondary" onclick="showSection('modules')">Back to Modules</a>
+                <button class="btn" onclick="submitForAnalysis('dr')">Submit for Analysis</button>
+            </div>
+
+            <div class="results-container" id="dr-results" style="display: none;">
+                <div class="results-header">
+                    <h3>Analysis Results</h3>
+                    <p>Here's what our AI model detected in your image</p>
+                </div>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h4>Predicted Classification</h4>
+                        <p><strong>Diagnosis:</strong> <span id="dr-diagnosis">N/A</span></p>
+                        
+                    </div>
+                    <div class="result-card">
+                        <h4>Visual Interpretation (SHAP)</h4>
+                        <p>SHAP visualization highlighting the regions that influenced the AI's decision:</p>
+                        
+                        
+                        <img id="dr-heatmap-image" src="static/shap_image.png" width="300px" alt="shap">
+                        <p><strong>Finding:</strong> <span id="dr-findings">N/A</span></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+        <!-- Glaucoma Section -->
+
+<section id="glaucoma" class="section">
+    <div class="container">
+        <div class="upload-container animate">
+            <div class="upload-header">
+                <h2>Glaucoma Analysis</h2>
+                <p>Upload fundus image for glaucoma assessment</p>
+            </div>
+            <div class="upload-area" id="gl-upload-area">
+                <div class="upload-icon">📁</div>
+                <p class="upload-text">Drag and drop your image here or click to browse</p>
+                
+                <input type="file" class="upload-input" id="gl-upload-input" accept="image/*">
+            </div>
+            <div class="buttons">
+                <a href="#modules" class="btn btn-secondary" onclick="showSection('modules')">Back to Modules</a>
+                <button class="btn" onclick="submitForAnalysis('gl')">Submit for Analysis</button>
+            </div>
+
+            <div class="results-container" id="gl-results" style="display: none;">
+                <div class="results-header">
+                    <h3>Analysis Results</h3>
+                    <p>Here's what our AI model detected in your image</p>
+                </div>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h4>Predicted Classification</h4>
+                        <p><strong>Diagnosis:</strong> <span id="gl-diagnosis">N/A</span></p>
+                        
+                    </div>
+                    <div class="result-card">
+                        <h4>Visual Interpretation (LIME)</h4>
+                        <p>Heat map highlighting important regions for the AI decision:</p>
+                        <img id="gl-heatmap-image" src="placeholder-image.jpg" alt="LIME Heatmap"
+                            style="max-width:100%; border:2px solid black; margin-top:10px; display:none;">
+                        <p id="gl-interpretation" style="margin-top:10px; font-style:italic;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+                    
+
+        <!-- Cataract Section -->
+        <section id="cataract" class="section">
+            <div class="container">
+                <div class="upload-container animate">
+                    <div class="upload-header">
+                        <h2>Cataract Analysis</h2>
+                        <p>Upload an eye image for cataract detection</p>
+                    </div>
+                    <div class="upload-area" id="ct-upload-area">
+                        <div class="upload-icon">📁</div>
+                        <p class="upload-text">Drag and drop your image here or click to browse</p>
+             
+                        <input type="file" class="upload-input" id="ct-upload-input" accept="image/*">
+                    </div>
+                    <div class="buttons">
+                        <a href="#modules" class="btn btn-secondary" onclick="showSection('modules')">Back to Modules</a>
+                        <button class="btn" onclick="submitForAnalysis('ct')">Submit for Analysis</button>
+                    </div>
+        
+                    <div class="results-container" id="ct-results" style="display: none;">
+                        <div class="results-header">
+                            <h3>Analysis Results</h3>
+                            <p>Here's what our AI model detected in your image</p>
+                        </div>
+                        <div class="results-grid">
+                            <div class="result-card">
+                                <h4>Predicted Classification</h4>
+                                <p><strong>Diagnosis:</strong> <span id="diagnosis">N/A</span></p>
+                                
+                               
+                            </div>
+                            <div class="result-card">
+                                <h4>Visual Interpretation (Grad-CAM)</h4>
+                                <p>Heat map highlighting the regions that influenced the AI's decision:</p>
+                                <img id="heatmap-image" src="placeholder-image.jpg" alt="Grad-CAM Heatmap"
+            style="max-width:100%; border:2px solid black; margin-top:10px; display:none;">
+            <p id="gradcam-interpretation" style="margin-top:10px; font-style:italic;"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+  <script>
+    // Function to display different sections
+    function showSection(sectionId) {
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('active');
+        });
+
+        document.getElementById(sectionId).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    // Function to submit an image for analysis
+    function submitForAnalysis(moduleId) {
+        const input = document.getElementById(`${moduleId}-upload-input`);
+        const file = input.files[0];
+
+        if (!file) {
+            alert("Please upload an image.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        // Set correct API URL based on the module (Glaucoma, Cataract, or Diabetic Retinopathy)
+        let apiUrl;
+        if (moduleId === "gl") {
+            apiUrl = "http://127.0.0.1:5679/predict";  // Glaucoma backend
+        } else if (moduleId === "ct") {
+            apiUrl = "http://127.0.0.1:5673/predict";  // Cataract backend
+        } else if (moduleId === "dr") {
+            apiUrl = "http://127.0.0.1:5000/predict"; 
+ 
+        } else {
+            console.error("Invalid module ID:", moduleId);
+            return;
+        }
+
+        fetch(apiUrl, {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (moduleId === "gl") {
+                document.getElementById("gl-results").style.display = "block";
+                document.getElementById("gl-results").scrollIntoView({ behavior: "smooth" });
+
+                // Update Glaucoma analysis results
+                document.getElementById("gl-diagnosis").innerText = data.diagnosis || "N/A";
+                
+                
+
+                // Display LIME image and interpretation
+                document.getElementById("gl-heatmap-image").src = `http://127.0.0.1:5679${data.heatmap_url}`;
+                document.getElementById("gl-heatmap-image").style.display = "block";
+                document.getElementById("gl-interpretation").innerText = data.interpretation || "No interpretation available.";
+            }
+            else if (moduleId === "ct") {
+                document.getElementById("ct-results").style.display = "block";
+                document.getElementById("ct-results").scrollIntoView({ behavior: "smooth" });
+
+                // Update Cataract analysis results
+                document.getElementById("diagnosis").innerText = data.diagnosis || "N/A";
+                
+                
+
+                // Ensure correct heatmap URL is displayed
+                let heatmapImg = document.getElementById("heatmap-image");
+                heatmapImg.src = `http://127.0.0.1:5673${data.heatmap_url}`;
+                heatmapImg.style.display = "block"; 
+                let interpretationElement = document.getElementById("gradcam-interpretation");
+                if (data.interpretation) {
+                    interpretationElement.innerHTML = data.interpretation.replace(/\n/g, "<br>"); // Preserve line breaks
+                    interpretationElement.style.display = "block"; 
+                } else {
+                    interpretationElement.innerText = "No interpretation available.";
+                }
+            }
+            else if (moduleId === "dr") {
+    document.getElementById("dr-results").style.display = "block";
+    document.getElementById("dr-results").scrollIntoView({ behavior: "smooth" });
+
+    // Update Diabetic Retinopathy analysis results
+    document.getElementById("dr-diagnosis").innerText = data.diagnosis || "N/A";
+
+    document.getElementById("dr-findings").innerText = data.findings || "Not specified";
+
+    document.getElementById("dr-heatmap-image").src = `http://127.0.0.1:5000${data.heatmap_url}`;
+    document.getElementById("dr-heatmap-image").style.display = "block";
+}
+
+        })
+        .catch(error => console.error("Error:", error));
+    }
+
+    // Add event listeners for file upload areas (Glaucoma, Cataract & Diabetic Retinopathy)
+    document.querySelectorAll('.upload-area').forEach(area => {
+        const input = area.querySelector('.upload-input');
+
+        area.addEventListener('click', () => {
+            input.click();
+        });
+
+        input.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+                area.querySelector('.upload-text').textContent = `Selected: ${fileName}`;
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

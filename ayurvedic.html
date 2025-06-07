@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ayurvedic Eye Care | EyeXplainer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #1976d2;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    section {
+      padding: 2rem;
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1976d2;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2, h3 {
+      color: #1976d2;
+      margin-bottom: 1rem;
+    }
+
+    .daily-tip {
+      background-color: #ffffff;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 8px rgba(25, 118, 210, 0.2);
+    }
+
+    .feature-card, .faq-item {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(25, 118, 210, 0.2);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .feature-card:hover, .faq-item:hover {
+      transform: translateY(-5px);
+      background: #e3f2fd;
+    }
+
+    .btn {
+      background-color: #1976d2;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0d47a1;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 1rem;
+      background-color: #f1f1f1;
+      border-radius: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .testimonial {
+      margin-top: 2rem;
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(25, 118, 210, 0.2);
+    }
+
+    .testimonial strong {
+      color: #1976d2;
+    }
+
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      background-color: #1976d2;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-top: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .dosha-quiz, .chatbot {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-question {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      display: none;
+      font-size: 1rem;
+      padding: 1rem;
+      background: #f9f9f9;
+      border-radius: 0.5rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container navbar-content">
+      <div class="logo">👁️ EyeXplainer</div>
+      <a href="home.html" class="btn btn-secondary">← Back</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Ayurvedic Eye Care</h1>
+      <p>Explore traditional Ayurvedic practices, lifestyle tips, and remedies for nurturing your vision naturally.</p>
+
+      <!-- Daily Tip -->
+      <div class="daily-tip" id="dailyTip"></div>
+
+      <!-- Remedies -->
+     <!-- Remedies -->
+<section>
+  <h2>🌼 Ayurvedic Remedies</h2>
+  <div class="feature-card">
+    <h3>1. Triphala Eye Wash</h3>
+    <p>A mixture of three fruits, Triphala helps cleanse and soothe the eyes. Use it as an eye wash regularly.</p>
+    <a href="https://www.netmeds.com/health-library/post/triphala-eyewash-discover-the-healing-benefits-of-this-wonder-herb-for-better-eye-health" 
+       class="btn" target="_blank">
+      Learn More about Triphala Eye Wash
+    </a>
+  </div>
+
+  <div class="feature-card">
+    <h3>2. Netra Tarpana</h3>
+    <p>An Ayurvedic therapy where medicated ghee is poured into the eyes. Done under supervision, it strengthens ocular muscles and nerves.</p>
+    <a href="https://www.netmeds.com/health-library/post/netra-tarpana-uses-benefits-and-5-ayurvedic-formulations-to-improve-vision" 
+       class="btn" target="_blank">
+      Learn More about Netra Tarpana
+    </a>
+  </div>
+
+  <div class="feature-card">
+    <h3>3. Herbal Diet for Eyes</h3>
+    <p>Include amla, carrot juice, spinach, and turmeric in your diet to maintain sharp vision.</p>
+  </div>
+</section>
+
+
+      <!-- Dosha Quiz -->
+      <div class="dosha-quiz">
+        <h3>✨ What’s Your Dosha?</h3>
+        <p><em>Discover your Ayurvedic body type and get personalized eye care tips.</em></p>
+        <a href="dosha.html" class="btn btn-primary" target="_blank">Take the Quiz</a>
+      </div>
+
+      
+      
+      
+      
+      <!-- Appointment -->
+      <section>
+        <h2>🧑‍⚕️ Book an Ayurvedic Doctor</h2>
+        <p>Get personalized Ayurvedic eye consultations online with certified practitioners.</p>
+        <a href="https://www.practo.com/ayurveda" class="btn btn-primary" target="_blank">Book Appointment</a>
+      </section>
+
+      <!-- Eye Care Tips -->
+      <section>
+        <h2>🌱 Daily Eye Care Tips</h2>
+        <ul>
+          <li>🌞 Wash your eyes with cold water every morning.</li>
+          <li>🥕 Eat a diet rich in Vitamin A, leafy greens, and fruits.</li>
+          <li>🧘 Practice meditation and pranayama for eye relaxation.</li>
+          <li>📵 Limit screen time and follow the 20-20-20 rule.</li>
+          <li>🛌 Get 7–8 hours of quality sleep every night.</li>
+        </ul>
+      </section>
+
+      <!-- FAQs -->
+      <section>
+        <h2>❓ Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">Is Ayurvedic treatment safe for eye diseases?</div>
+          <div class="faq-answer">Yes, when done under professional guidance, Ayurvedic treatments are generally safe and holistic.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">Can I do Netra Tarpana at home?</div>
+          <div class="faq-answer">It should be performed only under the supervision of a trained Ayurvedic doctor due to its delicacy.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">How often should I use Triphala eye wash?</div>
+          <div class="faq-answer">Depending on your eye condition, 2–3 times a week is generally safe. Consult a practitioner for personalized advice.</div>
+        </div>
+      </section>
+
+   
+  <script>
+    function toggleFaq(el) {
+      const answer = el.nextElementSibling;
+      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Daily Tip Generator
+    const tips = [
+      "Drink carrot and amla juice every morning.",
+      "Blink consciously to relax your eyes during screen time.",
+      "Practice candle-gazing (Trataka) for focus.",
+      "Splash cold water on your eyes before sleep.",
+      "Try Brahmi-infused ghee for inner cooling."
+    ];
+    const tipElement = document.getElementById('dailyTip');
+    const randomTip = tips[Math.floor(Math.random() * tips.length)];
+    tipElement.innerHTML = `<strong>🌞 Daily Tip:</strong> ${randomTip}`;
+  </script>
+
+</body>
+</html>

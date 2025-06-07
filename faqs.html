@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eye Health FAQs | MediVision AI</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #1976d2;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    section {
+      padding: 2rem;
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1976d2;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2, h3 {
+      color: #1976d2;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(25, 118, 210, 0.2);
+      padding: 1rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .faq-item:hover {
+      transform: translateY(-5px);
+      background: #e3f2fd;
+    }
+
+    .faq-question {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      display: none;
+      font-size: 1rem;
+      padding: 1rem;
+      background: #f9f9f9;
+      border-radius: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      background-color: #1976d2;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-top: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .btn-secondary {
+      background-color: #0d47a1;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background-color: #1976d2;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">👁️</span>
+        <span>EyeXplainer</span>
+      </div>
+      <nav>
+        <a href="home.html" class="btn-secondary">← Back</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Frequently Asked Questions</h1>
+
+    <section class="faq-item">
+      <h3 class="faq-question">1. How often should I get my eyes checked?</h3>
+      <div class="faq-answer">
+        <p>Adults should get their eyes checked every 1–2 years, or as recommended by an eye specialist.</p>
+      </div>
+    </section>
+
+    <section class="faq-item">
+      <h3 class="faq-question">2. Can screen time damage my eyes?</h3>
+      <div class="faq-answer">
+        <p>Prolonged screen use can lead to eye strain. Use proper lighting and take regular breaks.</p>
+      </div>
+    </section>
+
+    <section class="faq-item">
+      <h3 class="faq-question">3. Is it safe to wear contact lenses every day?</h3>
+      <div class="faq-answer">
+        <p>Yes, if cleaned properly and used as per guidelines. Follow your optometrist's instructions.</p>
+      </div>
+    </section>
+
+    <section class="faq-item">
+      <h3 class="faq-question">4. What foods are good for eye health?</h3>
+      <div class="faq-answer">
+        <p>Foods rich in Vitamin A, C, E, Omega-3 fatty acids, and zinc support good eye health.</p>
+      </div>
+    </section>
+
+    <section class="faq-item">
+      <h3 class="faq-question">5. When should I worry about floaters or flashes?</h3>
+      <div class="faq-answer">
+        <p>If you notice sudden increase in floaters, flashes, or loss of vision, seek medical attention immediately.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 EyeXplainer</p>
+  </footer>
+
+  <script>
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>
