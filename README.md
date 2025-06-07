@@ -1,4 +1,4 @@
-![lime_458_left png](https://github.com/user-attachments/assets/0221c685-3902-4d46-b39d-3e54e439c598)# Eye_Diseases_Detection
+# Eye_Diseases_Detection
 # 🧠 Diagnosis of Eye Diseases using Deep Learning and Explainable AI
 
 This project aims to diagnose three major eye diseases — **Diabetic Retinopathy**, **Cataracts**, and **Glaucoma** — using Deep Learning models combined with Explainable AI (XAI) techniques.
@@ -53,8 +53,6 @@ We propose a solution using **Deep Learning** for accurate diagnosis from retina
 - **Preprocessing:** Resize to 224×224, normalization
 
 ---
-
-## 📊 Results
 
 ### ✅ Accuracy Comparison
 
